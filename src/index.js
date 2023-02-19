@@ -1,17 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import './index.css' 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+let curtime = new Date();
+curtime = curtime.getHours();
+let greet = '';
+const style ={};
+
+if(curtime>=1 && curtime<12){
+  greet = 'Good Morning'
+  style.color = 'green';
+
+}
+else if(curtime>=12 && curtime<=19){
+  greet = 'Good Afternooon'
+  style.color = 'orange';
+}
+else{
+  greet = 'Good Night'
+  style.color = 'blue';
+}
+
+
+ReactDOM.render(
+  <>
+  <div className='head'>
+  <h1 >Hello,<span style={style}>{greet}...</span>!!!</h1>
+  </div>
+
+  </>,document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
